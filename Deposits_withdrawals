@@ -1,0 +1,72 @@
+
+### Input:
+""" 
+The user enters 30 transactions as integers from the keyboard.
+Positive numbers represent deposits.
+Negative numbers represent withdrawals.
+
+"""
+ 
+### Process:
+"""
+The program:
+Uses a for loop to collect 30 transactions.
+Uses conditional statements to determine whether each transaction is a deposit or withdrawal.
+Stores deposits and withdrawals in separate lists.
+Uses built-in functions such as sum(), max(), and min() to analyze the transactions.
+Calculates total deposits, total withdrawals, and the remaining account balance.
+Identifies the largest deposit and largest withdrawal.
+Checks whether the account has been overdrawn.
+
+"""
+ 
+ 
+ ### Output:    
+"""
+The user can see:
+All deposited transactions
+All withdrawal transactions
+Total deposits
+Total withdrawals
+Remaining account balance
+Largest deposit
+Largest withdrawal
+Average transaction amount
+Overdraft status
+
+"""
+
+
+###=== Main Function====
+def main() -> None:
+
+    Deposits =[]
+    Withdrawals = []
+
+
+    for i in range (30):   
+        Transactions = int(input("Enter Deposits and Withdrawals for the last 30 days:")) #Get users input 
+
+        if Transactions < 0:
+             Withdrawals.append(Transactions)
+        else:
+            Deposits.append(Transactions)
+    print("_____________________________________________________________________________________")
+    print(f"List of all deposited transactions: {Deposits}")
+    print(f"List of all withdrawals: {Withdrawals}")
+    print("_____________________________________________________________________________________")
+    print(f"Your total Deposits:${sum(Deposits)}")
+    print(f"Your total Withdrawals:${abs(sum(Withdrawals))}")
+    
+    if sum(Deposits)+ sum(Withdrawals) < 0:
+            print(f"Your account is overdrafted by ${abs((sum(Withdrawals))+ (sum(Deposits)))}")
+    else:
+            print(f"Your remaining balance:${(sum(Deposits)) + (sum(Withdrawals))}")
+        
+    print("___________________________________________________________________________________")
+    print(f"Your max amount deposited was ${max(Deposits)} and your largest withdrawal was ${abs(min(Withdrawals))}")
+    print (f"Your average transaction was:${(sum(Deposits) + sum(Withdrawals)/ (len(Deposits))+len(Withdrawals))}")
+# === Main Guard ===
+if __name__ == "__main__":
+       main()
+    
