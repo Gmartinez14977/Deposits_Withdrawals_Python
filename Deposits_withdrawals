@@ -31,7 +31,7 @@ Total withdrawals
 Remaining account balance
 Largest deposit
 Largest withdrawal
-Average transaction amount
+Average Deposits and Average Withdrawals 
 Overdraft status
 
 """
@@ -44,29 +44,28 @@ def main() -> None:
     Withdrawals = []
 
 
-    for i in range (30):   
-        Transactions = int(input("Enter Deposits and Withdrawals for the last 30 days:")) #Get users input 
+    for i in range (4):   
+        Deposited_Amounts= int(input(f"Enter Deposit #{i+1}:")) #Get users input 
+        Withdrew_Amounts= int(input(f"Enter Withdrawal #{i+1}:"))
 
-        if Transactions < 0:
-             Withdrawals.append(Transactions)
-        else:
-            Deposits.append(Transactions)
+        Deposits.append(Deposited_Amounts)
+        Withdrawals.append(Withdrew_Amounts)
+        
     print("_____________________________________________________________________________________")
-    print(f"List of all deposited transactions: {Deposits}")
-    print(f"List of all withdrawals: {Withdrawals}")
+    print(f"All deposited transactions: {Deposits}")
+    print(f"All withdrawals: {Withdrawals}")
     print("_____________________________________________________________________________________")
     print(f"Your total Deposits:${sum(Deposits)}")
-    print(f"Your total Withdrawals:${abs(sum(Withdrawals))}")
+    print(f"Your total Withdrawals:${sum(Withdrawals)}")
     
-    if sum(Deposits)+ sum(Withdrawals) < 0:
-            print(f"Your account is overdrafted by ${abs((sum(Withdrawals))+ (sum(Deposits)))}")
+    if (sum(Deposits) - sum(Withdrawals)) < 0:
+            print(f"Your account is overdrawn by ${(sum(Withdrawals))- (sum(Deposits))}. Please make a deposit for the negative balance to prevent fee charges")
     else:
-            print(f"Your remaining balance:${(sum(Deposits)) + (sum(Withdrawals))}")
+            print(f"Your remaining balance:${(sum(Deposits)) - (sum(Withdrawals))}")
         
     print("___________________________________________________________________________________")
-    print(f"Your max amount deposited was ${max(Deposits)} and your largest withdrawal was ${abs(min(Withdrawals))}")
-    print (f"Your average transaction was:${(sum(Deposits) + sum(Withdrawals)/ (len(Deposits))+len(Withdrawals))}")
+    print(f"Your max amount deposited was ${max(Deposits)} and your largest withdrawal was ${max(Withdrawals)}")
+    print (f"Your average for deposits is ${(sum(Deposits))/ (len(Deposits)):.2f} and your average of withdrawals is ${(sum(Withdrawals))/(len(Withdrawals)):.2f}")
 # === Main Guard ===
 if __name__ == "__main__":
        main()
-    
