@@ -44,7 +44,7 @@ def main() -> None:
     Withdrawals = []
 
 
-    for i in range (4):   
+    for i in range (30):   
         Deposited_Amounts= int(input(f"Enter Deposit #{i+1}:")) #Get users input 
         Withdrew_Amounts= int(input(f"Enter Withdrawal #{i+1}:"))
 
